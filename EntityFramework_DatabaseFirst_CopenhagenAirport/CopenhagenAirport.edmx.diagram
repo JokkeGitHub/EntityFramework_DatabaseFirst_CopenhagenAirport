@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5fa7f15b9eb7417d94a9e0f39499d806" Name="Diagram1">
+        <EntityTypeShape EntityType="CopenhagenAirportDBModel.Airport" Width="1.5" PointX="2.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopenhagenAirportDBModel.Company" Width="1.5" PointX="8.125" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopenhagenAirportDBModel.Country" Width="1.5" PointX="2.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopenhagenAirportDBModel.Flight" Width="1.5" PointX="8.125" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CopenhagenAirportDBModel.Route" Width="1.5" PointX="5.375" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="CopenhagenAirportDBModel.FK_countryId" ManuallyRouted="false" />
+        <AssociationConnector Association="CopenhagenAirportDBModel.FK_destinationId" ManuallyRouted="false" />
+        <AssociationConnector Association="CopenhagenAirportDBModel.FK_originId" ManuallyRouted="false" />
+        <AssociationConnector Association="CopenhagenAirportDBModel.FK_companyId" ManuallyRouted="false" />
+        <AssociationConnector Association="CopenhagenAirportDBModel.FK_ownerId" ManuallyRouted="false" />
+        <AssociationConnector Association="CopenhagenAirportDBModel.FK_routeId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
