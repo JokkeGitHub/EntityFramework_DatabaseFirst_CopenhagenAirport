@@ -1,0 +1,15 @@
+INSERT INTO Country(name) 
+VALUES('Denmark'), ('USA'), ('Iran'), ('Chad'), ('United Kingdom');
+
+INSERT INTO Company(name)
+VALUES('SAS'), ('BurgerWings'), ('Alibaba Airways'), ('Chad Flying'), ('Big Ben Sky');
+
+INSERT INTO Airport(name, countryId, iata)
+VALUES('Kastrup Airport', 1, 'CPH'), ('Los Angeles International Airport', 2, 'LAX'), ('Abadan Airport', 3, 'ABD'), ('Abeche', 4, 'AEH'), ('Aberdeen', 5, 'ABZ');
+
+INSERT INTO Route(ownerId, originId, destinationId)
+VALUES(1, 1, 2), (2, 2, 3), ( 3, 3, 4), (4, 4, 5), (5, 5, 1);
+
+
+INSERT INTO Flight(companyId, routeId, departure)
+VALUES (1, 2, 2023-03-27), (2, 3, 2023-03-25), (3, 4, 2023-03-28), (4, 5, 2023-03-26), (5, 1, 2023-03-29);

@@ -1,0 +1,83 @@
+IF NOT EXISTS(
+SELECT * FROM sys.databases WHERE name = 'CopenhagenAirportDB')
+BEGIN 
+CREATE DATABASE CopenhagenAirportDB;
+END
+
+IF EXISTS(
+SELECT * FROM sysobjects WHERE name='Flight' AND type='U')
+BEGIN
+DROP TABLE Flight;
+END
+
+IF EXISTS(
+SELECT * FROM sysobjects WHERE name='Route' AND type='U')
+BEGIN
+DROP TABLE Route;
+END
+
+IF EXISTS(
+SELECT * FROM sysobjects WHERE name='Airport' AND type='U')
+BEGIN
+DROP TABLE Airport;
+END
+
+IF EXISTS(
+SELECT * FROM sysobjects WHERE name='Company' AND type='U')
+BEGIN
+DROP TABLE Company;
+END
+
+IF EXISTS(
+SELECT * FROM sysobjects WHERE name='Country' AND type='U')
+BEGIN
+DROP TABLE Country;
+END
+
+CREATE TABLE Country(
+id INT IDENTITY (1,1),
+name VARCHAR(56) NOT NULL
+);
+
+CREATE TABLE Company(
+id INT IDENTITY (1,1),
+name VARCHAR(70) NOT NULL
+);
+
+CREATE TABLE Airport(
+id INT IDENTITY (1,1),
+name VARCHAR(70) NOT NULL,
+countryId INT NOT NULL,
+iata VARCHAR(3) NOT NULL
+);
+
+CREATE TABLE Route(
+id INT IDENTITY (1,1),
+ownerId INT NOT NULL,
+originId INT NOT NULL,
+destinationId INT NOT NULL
+);
+
+CREATE TABLE Flight(
+id INT IDENTITY (1,1),
+companyId INT NOT NULL,
+routeId INT NOT NULL,
+departure DATETIME NOT NULL
+);
+
+ALTER TABLE Country ADD CONSTRAINT PK_countryId PRIMARY KEY (id);
+
+ALTER TABLE Company ADD CONSTRAINT PK_companyId PRIMARY KEY (id);
+
+ALTER TABLE Airport ADD CONSTRAINT PK_airportId PRIMARY KEY (id);
+ALTER TABLE Airport ADD CONSTRAINT FK_countryId FOREIGN KEY (countryId) REFERENCES Country(id);
+ALTER TABLE Airport ADD CONSTRAINT UNIQUE_aita UNIQUE (iata);
+
+ALTER TABLE Route ADD CONSTRAINT PK_routeId PRIMARY KEY (id);
+ALTER TABLE Route ADD CONSTRAINT FK_ownerId FOREIGN KEY (ownerId) REFERENCES Company(id);
+ALTER TABLE Route ADD CONSTRAINT FK_originId FOREIGN KEY (originId) REFERENCES Airport(id);
+ALTER TABLE Route ADD CONSTRAINT FK_destinationId FOREIGN KEY (destinationId) REFERENCES Airport(id);
+
+ALTER TABLE Flight ADD CONSTRAINT PK_flightId PRIMARY KEY (id);
+ALTER TABLE Flight ADD CONSTRAINT FK_companyId FOREIGN KEY (companyId) REFERENCES Company(id);
+ALTER TABLE Flight ADD CONSTRAINT FK_routeId FOREIGN KEY (routeId) REFERENCES Route(id);
